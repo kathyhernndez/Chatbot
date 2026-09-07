@@ -1,63 +1,101 @@
-CHATBOT WEB FOR HOTEL PAGE
+# Hospitality AI Chatbot: Neural Network Intent Classifier & Flask API
 
-Design, development, implementation, training of a web chatbot, based on Python using the flask framework, the nltk, nlp, pytorch, numpy libraries to create the neural network and the functioning of the chatbot, sending requests through the server with protocol HTTP (GET, POST)
-.............
-JSON CORPUS FOR THE CHATBOT WEB HOTEL
+An intelligent, context-driven conversational assistant designed for hotel web platforms. The system uses a feedforward neural network built with **PyTorch** and **NLTK** for natural language understanding (intent classification), integrated into a **Flask REST API** containerized with **Docker**.
 
-Here you find a corpus for use in the training chatbot web for a web page hotel.
+---
 
-KEY WORDS FOR READ THIS JSON:
-"intents": this included a dic of key words and responses.
-"tag":  identify of words for trains
-"responses": response for train bot
-"patterns": maybe the input of users
-...................
+## 📌 Features & Architecture
+- **Natural Language Processing (NLP):** Tokenization, stemming, and Bag-of-Words vectorization using `nltk`.
+- **Deep Learning Core:** Multi-layer PyTorch neural network trained on custom intent schemas (`intents.json`).
+- **RESTful Backend:** Lightweight Flask service processing incoming chat payloads (`POST` requests) and serving contextual responses.
+- **Frontend-Ready:** Pre-configured endpoints and JavaScript integration for client applications.
+- **Containerized Deployment:** Reproducible setup using Docker and Docker Compose.
 
-DOCKER IMAGE FLASK SERVER
-This is a container DOCKER for running a Flask server for implementing the chatbot interface, conect to the container of React in the frontend APP
-In construction
+---
 
-........................
+## 🛠️ Tech Stack
+- **Languages:** Python 3.9+, JavaScript, HTML/CSS
+- **Machine Learning & NLP:** PyTorch, NLTK, NumPy
+- **Backend & APIs:** Flask, REST APIs (JSON payloads)
+- **DevOps & Environment:** Docker, Docker Compose
 
-APP
-Api flask connection to the server and frontend for send a recieved message to chat bot using flask framework
+---
 
-........................
+## 📂 Project Structure
+```text
+├── data/
+│   └── intents.json        # Training corpus (tags, patterns, and responses)
+├── models/
+│   └── data.pth            # Trained PyTorch model weights
+├── static/
+│   ├── app.js              # Frontend asynchronous fetch logic
+│   └── style.css           # Chat widget styling
+├── templates/
+│   └── base.html           # Web interface template
+├── app.py                  # Flask API server & routing
+├── chat.py                 # Standalone inference script
+├── model.py                # Neural network architecture definition
+├── nltk_utils.py           # Text preprocessing utilities
+├── train.py                # Pipeline for model training and evaluation
+├── Dockerfile              # Docker runtime container definition
+├── docker-compose.yml      # Multi-container orchestration
+├── requirements.txt        # Python package dependencies
+└── README.md
+```
 
-You can run this app:
+---
+### 🚀 Getting Started
+Option 1: Run with Docker Compose (Recommended)
+Ensure you have Docker and Docker Compose installed:
 
-1. Clone the repository
-2. Install Docker in your pc
-3. Inside of directory of chatbot run: docker-compose up -d
-4. Flow the url for view the chatbot interface
-5. Close the serve with command ctrl + c
+```Bash
+# Clone the repository
+git clone [https://github.com/kathyhernndez/YOUR_REPO_NAME.git](https://github.com/kathyhernndez/YOUR_REPO_NAME.git)
+cd YOUR_REPO_NAME
 
-..........................
+# Build and launch the containerized application
+docker-compose up -d
+Navigate to http://localhost:5000 in your browser to access the chat interface. To stop the service:
+```
 
-DOCKERFILE 
+```Bash
+docker-compose down
+Option 2: Local Setup (Virtual Environment)
+Clone the repository and prepare the environment:
+```
+```Bash
+git clone [https://github.com/kathyhernndez/YOUR_REPO_NAME.git](https://github.com/kathyhernndez/YOUR_REPO_NAME.git)
+cd YOUR_REPO_NAME
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+Train the intent classification model:
+```
+```Bash
+python train.py
+This processes intents.json and exports the trained weights to data.pth.
 
-Is the configuration of enviroment of the flask server app.
+Verify the model via CLI (Optional):
+```
+```Bash
+python chat.py
+Start the Flask server:
+```
+```Bash
+python app.py
+Open http://127.0.0.1:5000 in your browser.
+```
+---
+### 📊 Dataset Schema (intents.json)
+The chatbot's domain knowledge is defined via a structured JSON corpus:
+```
+tag: Target intent label (e.g., "booking", "check-in", "pricing").
 
-DOCKER COMPOSE
+patterns: Sample user inputs used for text vectorization and training.
 
-Container of image docker in python
-
-...........................
-
-This chatbot is configure for used in the web app hotel, and will be implementing with change of corpus (intents.json) and adapter.
-
-...................................
-
-To run this chat bot:
-
-1. Download or clone the repository
-2. create a virtual environment
-3. Install the dependencies of the requirements.txt file
-4. Run the training application: train.py
-5. Run to test the chatbot: chat.py
-6. Run the flask server: app.py
-7. test the graphical interfaces.
-
-#Note: the connections to the frontend interface are already made in this project with js, and the methods used are htt (post, get)
-
-
+responses: Curated outputs returned upon high-confidence intent classification.
+```
+----
+### 📬 Authors & Contacts
+- Katherine Hernández — Software Engineer & Applied AI
+- Cristian D. Avella - Data Engineer 
